@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LayoutProps } from "@/types";
+import { ThemeProvider } from "next-themes";
 
 
 export const metadata: Metadata = {
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en">
-      <body>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased">
+        <ThemeProvider defaultTheme="light" disableTransitionOnChange attribute='class'>{children}</ThemeProvider>
       </body>
     </html>
   );
